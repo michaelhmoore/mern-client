@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom'
+import Container from 'react-bootstrap/Container'
+import Header from './components/Header'
+import MessageList from './components/MessageList'
+import AddMessage from './components/AddMessage'
+import EditMessage from './components/EditMessage'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Container className='mt-3'>
+      <Header />
+      <Routes>
+        <Route path='/' element={<MessageList />} />
+        <Route path='/add' element={<AddMessage />} />
+        <Route path='/edit/:messageId' element={<EditMessage />} />
+      </Routes>
+    </Container>
+  )
 }
 
-export default App;
+export default App
